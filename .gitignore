@@ -1,3 +1,7 @@
+#client-side files
+home.html
+courses.html
+
 #Server-side files
 app.js
 node_modules/
