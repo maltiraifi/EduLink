@@ -1,0 +1,240 @@
+/************************TAG SELECTOR********************/
+Body {
+    text-align: center;
+}
+
+h1 {
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    padding: 0;
+    margin: 2% 0 0 0;
+}
+
+/* Headings */
+.big-heading {
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 3rem;
+    line-height: 1.5;
+    font-weight: 900;
+    padding: 100px 0 50px 0;
+}
+
+.section-heading {
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    padding-bottom: 1.5rem;
+}
+
+/* Containers */
+.container-fluid {
+    padding: 7% 10%;
+}
+
+/* Nav Bar */
+
+/* .navbar {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); 
+} */ /* Just a suggestion adding shadow */
+
+.navbar-brand {
+    font-family: 'Roboto', sans-serif; /* Change the font */
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.nav-link {
+    font-family: 'Gill Sans', sans-serif;
+    font-weight: 500;
+}
+
+.underline::after {
+    content: '';
+    width: 0%;
+    height: 1px;
+    transition: 0.7s;
+    margin: auto;
+    display: block;
+    background: #630000;
+    border-radius: 100px;
+}
+
+.underline:hover::after {
+    width: 100%;
+}
+
+
+
+/* Sections */
+.colored-section {
+    background-color: maroon;
+    color: #ffff;
+}
+
+.biege-section {
+    background-color: #EEEBDD;
+}
+
+.limaroon-section {
+    background-color: #810000;
+}
+
+.dark-section {
+    background-color: #1B1717;
+}
+
+/* Title */
+#title .container-fluid {
+    padding: 0.2% 10% 7%;
+    text-align: left;
+}
+
+.edu, .alevels, .aboutus {
+    color: maroon;
+}
+
+/*************Fix Bootstrap class/ (itme) ->> (item)****************/
+
+.btn {
+    border-radius: 5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.btn-color {
+    background-color: maroon;
+}
+
+.download-button {
+    margin: 5% 3% 5% 0;
+}
+
+
+/* About us */
+.card-title {
+    font-family: 'Gill Sans', sans-serif;
+    font-weight: 550;
+}
+
+.card-text {
+    font-family: serif;
+    line-height: 1.5;
+}
+
+
+/* Testimonials */
+#testimonials {
+    padding: 50px 0;
+}
+
+.testimonial-text {
+    font-size: 2rem;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.testimonial-image {
+    width: 10%;
+    border-radius: 100%;
+    margin: 20px;
+} 
+
+.caption {
+    font-family: serif;
+    font-size: 1rem;
+}
+
+/* Footer */
+.lingua {
+    color: #EEEBDD;
+}
+
+.footer-cat {
+    font-family: 'Gill Sans', sans-serif;
+    color: #EEEBDD;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-cat:hover {
+    color: #EEEBCC;
+    text-decoration: none;
+}
+
+.footer-item {
+    color: #EEEBDD;
+    font-family: serif;
+    line-height: 1.5;
+}
+
+.footer-item:hover {
+    color: #EEEBCC;
+    text-decoration: none;
+}
+
+.icon {
+    color: #810000;
+    margin: 3% 3% 5% 0;
+}
+
+.icon:hover {
+    color: #630000;
+}
+
+.contact-icon {
+    color: #810000;
+    margin: 1% 1% 1% 0;
+}
+
+.contact-icon:hover {
+    color: #630000;
+    text-decoration: none;
+}
+
+.contacts {
+    text-align: left;
+}
+
+.contact-text {
+    color: #EEEBDD;
+    font-family: serif;
+    font-weight: 300;
+}
+
+.contact-text:hover {
+        color: #EEEBCC;
+        text-decoration: none;
+}
+
+#footer .nav-item {
+    margin: 2% 0;
+}
+/* Media-Query */
+
+@media (max-width:575px) {
+    .big-heading {
+        text-align: center;
+    }
+    
+    #title, .title {
+        text-align: center;
+    }
+    /*Try to find a way to implement the centring in the whole section*/
+    .contacts {
+        text-align: center;
+    }
+}
+
+/******************Courses*******************/
+
+/* Header */
+div.container-fluid.nav-container {
+    padding: 0% 10% 0%;
+}
