@@ -5,3 +5,9 @@ courses.html
 #Server-side files
 app.js
 node_modules/
+
+#Databases Modules
+/module
+/module/chapter.js
+/module/commonData.js
+/module/course.js
