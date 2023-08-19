@@ -29,13 +29,12 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a href="" class="nav-link"><button class="btn btn-md sing-up">Sign up</button></a></li>
-                            <li class="nav-item"><a href="" class="nav-link"> <button class="btn btn-md btn-color btn-danger" type="button">Log in</button></a></li> 
+                            <li class="nav-item"><a  class="nav-link btn-hidden"><button class="btn btn-md sing-up">Sign up</button></a></li>
+                            <li class="nav-item"><a  class="nav-link btn-hidden"> <button class="btn  btn-md btn-color btn-danger" type="button">Log in</button></a></li> 
                         </ul>
                         
                     </div>
                 </nav>
-                
             </div>
             <div class="colored-section">
               <div class="container-fluid">
@@ -46,33 +45,36 @@
 
           <section id="courses">
             <div class="container-fluid">
-              <div class="row">
-                <% subjects.forEach((subject) => { %> <!-- Loop through subjects array -->
-                  <div class="col-md-4">
-                    <div class="card">
-                      <img class="card-img-top" src="<%= subject.image %>" alt="Card image cap"> <!-- Use subject.image property -->
-                      <div class="card-body">
-                        <h5 class="card-title" style="text-align: left;"><%=subject.name%></h5> <!-- Use subject.name property -->
-                        <p class="card-text" style="text-align: left"><%=(subject.description).substring(0,150) + '...'%></p> <!-- Use subject.description property -->
-                        <div class="row">
-                          <div class="col-md-6">
-                            <p><img src="images/chapter.png" alt="chapter-icon" height="25px" class="icon"> Chapters: <%=subject.chapters.length%></p> <!-- Use subject.chapters.length to count chapters -->
-                          </div>
-                          <div class="col-md-6">
-                            <p><img src="images/book.png" alt="lesson-icon" height="25px" class="icon"> Lessons: <%=subject.lessons.length%></p> <!-- Use subject.lessons.length to count lessons -->
-                          </div>
+              <% subjects.forEach((subject, index) => { %>
+                <% if (index % 3 === 0) { %>
+                  <div class="row">
+                <% } %>
+                <div class="col-lg-4 course">
+                  <div class="card">
+                    <img class="card-img-top" src="<%= //subject.image %>/images/Physics.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title" style="text-align: left;"><%= subject.name %></h5>
+                      <p class="card-text" style="text-align: left"><%=(subject.description).substring(0,150) + '...'%></p>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><img src="images/chapter.png" alt="chapter-icon" height="25px" class="icon"> Chapters: <%=subject.chapters.length%></p>
                         </div>
-                        <div>
-                          <a href="/courses/<%= subject.slug %>"><button class="btn btn-danger btn-color btn-lg download-button">Go to Course</button></a> <!-- Use subject.slug property to construct the course URL -->
+                        <div class="col-md-6">
+                          <p><img src="images/book.png" alt="lesson-icon" height="25px" class="icon"> Lessons: ###</p>
                         </div>
+                      </div>
+                      <div>
+                        <a href="/courses/<%=subject.slug%>"><button class="btn btn-danger btn-color btn-lg download-button">Go to Course</button></a>
                       </div>
                     </div>
                   </div>
-                <% }) %>
-              </div>
+                </div>
+                <% if ((index + 1) % 3 === 0 || index === subjects.length - 1) { %>
+                  </div>
+                <% } %>
+              <% }) %>
             </div>
-          </section>
-          
+          </section>   
   <!------------------Footer----------------------->
 
 <!-- DON't USE CLOSING BODY!!! -->

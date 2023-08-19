@@ -1,6 +1,6 @@
 <!-- START WITH TITLE, CLOSE HEAD, OPEN BODY -->
 <%- include('partials/header') -%>
-
+<!-- /courses/:subject -->
 <title>EduLink · Chapters</title>
 </head>
 <body>
@@ -37,59 +37,36 @@
             </div>
             <!-----HERE IS THE CONTENT ---->
             <div class="colored-section">
-              <div class="container-fluid subject-header-container">
+              <div class="container subject-header-container">
                   <h2 class="section-heading"><%=subjectName%></h2>
                </div>   
             </div>
           </section>
 
           <section id="chapter-collection">
-            <div class="container-fluid">       
-                  <div class="chapter-container">
+            <div class="container"> 
+                <% chaptersInfo.forEach((chapter, index)=>{ %>      
+                  <div class="chapter-container shadow">
+                        <div class="row">
                     <!-- Chapter name & pic -->
-                  <div class="row">
-                    <%//array.forEach((chapter)=>{ %>
-                        <img src="/images/caliper.png" class="chapter-icon" height="75px" alt="physical-quantities-icon"><a href="" class="chapter-name"><%=//chapter.title%></a>
-                    <%//}) %>
-                    
-                  </div>
+                        <img src="/images/<%=chapter.image%>" class="chapter-icon" height="75px" alt="<%=chapter.image%>"><a href="/courses/<%=subjectSlug%>/<%=chapter.title%>" class="chapter-name"><%=chapter.title%></a>
+                        </div>
                   <!-- Breaker Div -->
                   <div class="line"></div>
                   <!-- Topics  -->
                   <div class="row topic-raw">
-                    <div class="col-md-4">
-                        <a href="" class="topic-name">Topic 1</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="" class="topic-name">Topic 1</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="" class="topic-name">Topic 1</a>
+                    <div class="col-md-12">
+                        <% if (chapter.description) {%>
+                            <p class="topic-name"><%=(chapter.description).substring(0, 150) + '...'%></p>
+                        <%} else {%>
+                            <p class="topic-name">Chapter description is not available...</p>
+                        <%}%>
                     </div>
                   </div>
-                  <div class="row topic-raw">
-                    <div class="col-md-4">
-                        <a href="" class="topic-name">Topic 1</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="" class="topic-name">Topic 1</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="" class="topic-name">Topic 1</a>
-                    </div>
-                  </div>
-                 </div>      
+                 </div> 
+                 <% })%>     
                 
             </div>
           </section>
     </div>
 <%- include('partials/footer') -%>
-
-Sorry i'm just responding now, I cut my finger(skull face)
-This is sooooo cute(smiling ligtly)
-but seriously
-
-I think he deserves better than me fr(skull face)
-Give me your honest opinion (hands on face aka soilder)
-
-(See how cute my future husband is(smiling lightly))

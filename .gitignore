@@ -1,9 +1,13 @@
 #client-side files
-home.html
 courses.html
+home.html
+dashboardScript.js
+script.js
 
 #Server-side files
 app.js
+server.js
+server2.js
 node_modules/
 
 #Databases Modules
@@ -11,3 +15,19 @@ node_modules/
 /module/chapter.js
 /module/commonData.js
 /module/course.js
+
+#Environmental Variables
+.env
+
+#EJS
+adminFooter.EJS
+adminHeader.EJS
+footerOlder.EJS
+adminlogin.EJS
+chapterCTRL.EJS
+courseCTRL.EJS
+topicCTRL.EJS
+dashboard.EJS
+
+#Heroku
+Procfile
