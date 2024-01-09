@@ -37,8 +37,8 @@
 
 
     <!-- Most dnagerous section I have ever made -->
-    <section id="video-container">
 
+    <section id="video-container">
 
         <!-- Desktop page part -->
         <!-- d-none d-lg-block -->
@@ -50,6 +50,9 @@
                 <!-- Shown video -->
                 <!-- Footer included -->
                 <div class="topic-video-lg col-lg-9">
+                  <%  if(foundTopic.content) {%>
+                        
+                   <% if (foundTopic.type === 'video') {%>
 
                     <!-- Logic comes here if (video) then this div.main-video or else ... -->
                     <div class="main-video">
@@ -59,12 +62,36 @@
                             <!-- src="<%=//%>" -->
                             <!-- <iframe src="https://www.youtube.com/embed/JBeEpW8l-Mg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
                             <!-- <video controls autoplay src="/images/Rainy Day at The Office - No Commentary 😊 Day in The Life of a Software Engineer (ep. 32).mp4"></video> -->
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hJ4fb5zW3ds" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" src="<%=foundTopic.content%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                           </div> 
       
                         </div>
                         
                     </div>
+               <% } else if (foundTopic.type === 'pdf') { %>
+                <div class="main-video">
+                    <div class="video">
+                    <!-- video-wrapper (deleted class from div) -->
+                      <div class=" embed-responsive embed-responsive-16by9">
+
+                        <!-- Topic name is going to be here -->
+                        <!-- Topic content link -->
+
+                        <!-- src="<%=//topic.content%>" -->
+
+                        <!-- <iframe src="https://www.youtube.com/embed/JBeEpW8l-Mg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+                        <!-- <video controls autoplay src="/images/Rainy Day at The Office - No Commentary 😊 Day in The Life of a Software Engineer (ep. 32).mp4"></video> -->
+                        <!-- <iframe src="<%=//foundTopic.content%>>" width="640" height="480" allow="autoplay"></iframe> -->
+                        <iframe class="embed-responsive-item" src="<%=foundTopic.content%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                        
+                      </div> 
+  
+                    </div>
+                    
+                </div>
+              <% }%>
+                   <% } else {%>
+                    <p>No content to be shown</p>
+                    <%}%>
       
                     <div class="tabs container-fluid">
                         <!-- nav-pills -->
@@ -81,10 +108,12 @@
                           </ul>
                           <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                <h3 class="section-heading">Video Name</h3>
+                                <h3 class="section-heading">
+                                    <%=foundTopic.title%>
+                                </h3>
                                 <hr>
                                 <h3 class="section-heading">About this chapter</h3>
-                                <p class="chapter-description"><%=chapterDescription%></p>
+                                <p class="chapter-description"><%=foundChapter.description%></p>
                             </div>
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                 <h1>Hello Friend d:</h1>
@@ -118,8 +147,6 @@
                                             </li>
                                         </ul>
                                     </div>
-                                  
-                                     
                                             <div class="col-md-3">
                                                 <p><a href="/courses" class="footer-cat">Courses</a></p>
                                                 <ul class="navbar-nav"> 
@@ -144,21 +171,21 @@
                                                     <li class="nav-item"><a href="#" class="footer-item">Lorem ipsum</a></li>
                                                 </ul>
                                             </div>
-                                     
-                                   
                                 </div>
                             </div>
                         </div>
                     </section>
-                    
+
                 </div>
-                
+    <!--Here is the closing tab of the first forEach topic logic function-->
+
+    
                 <!-- Playlist Column -->
                 <div class="playlist-side col-lg-3">
                     <div class="playlist-sticking">
                         <div class="playlist-topic-heading">
                             <h3 class="chapter-playlist-name">
-                                <%=chapterTitle%>
+                                <%=foundChapter.title%>
                             </h3>
                         </div>
                         <div class="breaker"></div>
@@ -166,10 +193,20 @@
                             <!-- Title outside & create div cuz (video list has scroll when overflow) -->
                             
                             <div class="playlist-item">
-                                <div class="topic">
-                                    <p class="topic-title">0. Kinematics Chapter Introduction</p>
-                                    <p class="topic-media"><img src="" alt="media-type"> duration/file size</p>
-                                </div>
+                               <% topics.forEach((topic)=>{%>
+                                    <div class="topic" id="topic-container-<%=topic.id%>" >
+                                        <a class="topic-link" href="/courses/:subject/<%=foundChapter.link%>/<%=topic.id%>">
+                                        <p class="topic-title"><%=topic.topicSorting%> . <%=topic.title%> empty</p>
+                                        <p class="topic-media">
+                                            <%if(topic.content === 'video') {%>
+                                                <img src="" alt="media-video">
+                                            <%} else if (topic.content === 'pdf') {%>
+                                                <img src="images/file.png" alt="media-pdf">
+                                            <%}%>
+                                        </p>
+                                    </a>
+                                    </div>
+                                <%})%>
                             </div>
                            
                         </div>
@@ -182,7 +219,9 @@
         </div>
 
         <!-- Tablet and phone page part -->
-        <div class="playlist-device d-block d-md-none">
+        <!--  -->
+        <!--  d-none d-sm-block d-lg-none -->
+        <div class="playlist-device d-lg-none ">
             <div class="topic-video">
                 <div class="video">
                     <!-- video-wrapper (deleted class from div) -->
@@ -190,9 +229,9 @@
                         <!-- src="<%=//%>" -->
                         <!-- <iframe src="https://www.youtube.com/embed/JBeEpW8l-Mg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
                         <!-- <video controls autoplay src="/images/Rainy Day at The Office - No Commentary 😊 Day in The Life of a Software Engineer (ep. 32).mp4"></video> -->
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hJ4fb5zW3ds" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" src="<%=foundTopic.content%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                       </div> 
-  
+                      <!-- .d-none .d-md-block .d-xl-none -->
                 </div>
             </div>
 
@@ -216,35 +255,36 @@
                         <div class="playlist-list">
                             <div>
                                 <h3 class="chapter-playlist-name">
-                                    <%=chapterTitle%>
+                                    <%=foundChapter.title%>
                                 </h3>
                             </div>
                             <div class="breaker"></div>
                             <div class="video-list ">
                                 <!-- Title outside & create div cuz (video list has scroll when overflow) -->
-                                
-                                <div class="playlist-item">
-                                    <div class="topic">
-                                        <p class="topic-title">0. Kinematics Chapter Introduction</p>
-                                        <p class="topic-media"><img src="" alt="media-type"> duration/file size</p>
+                                <% topics.forEach((topic)=>{%>
+                                    <div class="topic" id="topic-container-<%=topic.id%>" >
+                                        <a class="topic-link" href="/courses/:subject/<%=foundChapter.link%>/<%=topic.id%>">
+                                        <p class="topic-title"><%=topic.topicSorting%> . <%=topic.title%> empty</p>
+                                        <p class="topic-media">
+                                            <%if(topic.content === 'video') {%>
+                                                <img src="" alt="media-video">
+                                            <%} else if (topic.content === 'pdf') {%>
+                                                <img src="images/file.png" alt="media-pdf">
+                                            <%}%>
+                                        </p>
+                                    </a>
                                     </div>
-                                </div>
-                                <div class="playlist-item">
-                                    <div class="topic">
-                                        <p class="topic-title">0. Kinematics Chapter Introduction</p>
-                                        <p class="topic-media"><img src="" alt="media-type"> duration/file size</p>
-                                    </div>
-                                </div>
+                                <%})%>
                             </div>
                         </div>
                     </div>
 
 
                     <div class="tab-pane fade" id="pills-overview" role="tabpanel" aria-labelledby="pills-overview-tab">
-                        <h3 class="section-heading">Video Name</h3>
+                        <h3 class="section-heading"><%=foundTopic.title%></h3>
                         <hr>
                         <h3 class="section-heading">About this chapter</h3>
-                        <p class="chapter-description"><%=chapterDescription%></p>
+                        <p class="chapter-description"><%=foundChapter.description%></p>
                     </div>
                     <div class="tab-pane fade" id="pills-empty" role="tabpanel" aria-labelledby="pills-empty-tab">
                         <h1>Hello Friend d:</h1>
